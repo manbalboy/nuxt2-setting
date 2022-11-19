@@ -1,0 +1,17 @@
+{
+  //테스트 환경에서 사용 하기위한 별도의 babel 설정
+  "env": {
+    "test": {
+      "presets": [
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

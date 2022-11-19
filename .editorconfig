@@ -1,0 +1,15 @@
+# editorconfig.org
+# 편집기 코드 일관성
+# VSCODE 는 EditorConfig for VS Code Plugin 설치
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.md]
+trim_trailing_whitespace = false

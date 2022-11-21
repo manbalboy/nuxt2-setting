@@ -1,10 +1,33 @@
+// import storybookCodePanel from 'storybook-code-panel';
 import { withTests } from '@storybook/addon-jest';
+import { action } from '@storybook/addon-actions';
 import results from '@/__tests__/.jest-test-results.json';
 import BaseInput from '@/components/Inputs/BaseInput';
 
 export default {
   title: 'Component/Inputs/BaseInput',
+  parameters: {
+    storybookCodePanel: {
+      disabled: false,
+      files: [
+        {
+          fileName: 'button.js',
+          language: 'javascript',
+          // Not needed if file extension was mapped globally, or file extension matches Prism language key
+          // eslint-disable-next-line import/no-webpack-loader-syntax
+          code: require('!!raw-loader!@/__stories__/Input/BaseInput.stories.js'),
+        },
+        {
+          fileName: 'BaseInput.vue',
+          language: 'javascript',
+          // eslint-disable-next-line import/no-webpack-loader-syntax
+          code: require('!!raw-loader!@/components/Inputs/BaseInput'),
+        },
+      ],
+    },
+  },
   component: BaseInput,
+
   argTypes: {
     tag: { control: 'text' },
   },
@@ -14,16 +37,15 @@ export default {
 const Template = (args, { argTypes }) => ({
   props: Object.keys(argTypes),
   components: { BaseInput },
-  template: `<BaseInput  v-bind="$props" v-model="value" @input="test" />`,
+  template: `<BaseInput  v-bind="$props" v-model="value" @input="input"  @click="click"/>`,
   data() {
     return {
       value: '',
     };
   },
   methods: {
-    test(e, test) {
-      console.log(e, test);
-    },
+    input: action('input'),
+    click: action('clicked'),
   },
 });
 

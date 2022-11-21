@@ -35,7 +35,7 @@
 ## Install
 - git clone
 ```shell
-git clone https://github.com/manbalboy/kubewatcher-ui-vue.git .
+git clone https://github.com/manbalboy/nuxt2-setting.git .
 ```
 - npm install
 ```shell

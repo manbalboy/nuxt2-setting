@@ -37,7 +37,13 @@ export default {
 
   // Storybook 관련
   storybook: {
-    addons: ['@storybook/addon-controls', '@storybook/addon-notes', '@storybook/addon-jest'],
+    addons: ['@storybook/addon-controls', '@storybook/addon-notes', '@storybook/addon-jest', 'storybook-code-panel'],
     stories: ['~/__stories__/**/*.stories.@(ts|js)'],
+    parameters: {
+      storybookCodePanel: {
+        disabled: false,
+        allowedExtensions: ['scss', 'css', 'js', 'json', 'vue'],
+      },
+    },
   },
 };

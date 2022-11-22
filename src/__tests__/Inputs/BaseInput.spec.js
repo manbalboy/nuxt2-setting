@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
-import BaseInput from '@/components/Inputs/BaseInput.vue';
-import { propsDefaultCheck } from '@/utils/test/test-utils.js';
+import BaseInput from '~/components/Inputs/BaseInput.vue';
+import { propsDefaultCheck } from '~/utils/test/test-utils.js';
 
 describe('BaseInput', () => {
   let wrapper;
@@ -95,8 +95,6 @@ describe('BaseInput', () => {
         expect(testEl.exists()).toBe(true);
         expect(testEl.text()).toBe(testErrorString);
       });
-      test('기본값 확인', async () => {});
-      test('기본값 확인', async () => {});
     });
 
     describe('value 확인', () => {
@@ -322,7 +320,7 @@ describe('BaseInput', () => {
         wrapper.vm.onInput({ target: { value: 'test' } });
 
         // then
-        expect(wrapper.emitted().input[0][0]).toEqual('test');
+        expect(wrapper.emitted().input[0]).toEqual(['test']);
       });
     });
 

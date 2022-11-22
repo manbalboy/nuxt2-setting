@@ -18,7 +18,12 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    'assets/css/demo.css',
+    'assets/css/font-awesome.css',
+    'assets/css/nucleo-icons.css',
+    'assets/sass/black-dashboard-pro.scss',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -36,14 +41,15 @@ export default {
   build: {},
 
   // Storybook 관련
-  storybook: {
-    addons: ['@storybook/addon-controls', '@storybook/addon-notes', '@storybook/addon-jest', 'storybook-code-panel'],
-    stories: ['~/__stories__/**/*.stories.@(ts|js)'],
-    parameters: {
-      storybookCodePanel: {
-        disabled: false,
-        allowedExtensions: ['scss', 'css', 'js', 'json', 'vue'],
-      },
-    },
-  },
+  // storybook: {
+  //   //, 'storybook-code-panel'
+  //   addons: ['@storybook/addon-controls', '@storybook/addon-notes', '@storybook/addon-jest'],
+  //   stories: ['~/__stories__/**/*.stories.@(ts|js)'],
+  //   // parameters: {
+  //   //   storybookCodePanel: {
+  //   //     disabled: false,
+  //   //     allowedExtensions: ['scss', 'css', 'js', 'json', 'vue'],
+  //   //   },
+  //   // },
+  // },
 };

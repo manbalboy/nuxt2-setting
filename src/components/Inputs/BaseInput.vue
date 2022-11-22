@@ -137,7 +137,7 @@
         if (!this.touched) {
           this.touched = true;
         }
-        this.$emit('input', evt.target.value, evt);
+        this.$emit('input', evt.target.value);
       },
 
       onFocus(evt) {

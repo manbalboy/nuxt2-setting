@@ -1,7 +1,5 @@
 <template>
   <div>
-    server
-    <nuxt-link to="/indexa">csr 이동</nuxt-link>
     <template v-if="isLoading">
       <p v-if="isLoading">loading...</p>
     </template>

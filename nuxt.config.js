@@ -1,4 +1,5 @@
 export default {
+  // ssr: false,
   // 루트 디렉토리
   srcDir: 'src/',
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -26,7 +27,11 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: '~plugins/mock.js', mode: 'client' }],
+  axios: {
+    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    baseURL: 'http://localhost:3000/',
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -35,10 +40,15 @@ export default {
   buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxt/postcss8'],
+  modules: ['@nuxtjs/axios', '@nuxt/postcss8'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, ctx) {
+      config.module.rules // fixes https://github.com/graphql/graphql-js/issues/1272
+        .push({ test: /\.mjs$/, include: /node_modules/, type: 'javascript/auto' });
+    },
+  },
 
   // Storybook 관련
   // storybook: {

@@ -27,14 +27,17 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [{ src: '~plugins/mock.js', mode: 'client' }],
+  plugins: [
+    // { src: '~plugins/mock.js', mode: 'client' } mock service worker (backend 없을 때 사용)
+  ],
+
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     baseURL: 'http://localhost:3000/',
   },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
+  components: false,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [],
@@ -47,10 +50,15 @@ export default {
     extend(config, ctx) {
       config.module.rules // fixes https://github.com/graphql/graphql-js/issues/1272
         .push({ test: /\.mjs$/, include: /node_modules/, type: 'javascript/auto' });
+
+      if (!ctx.isServer) {
+        config.devtool = '#source-map';
+      }
     },
   },
 
   // Storybook 관련
+  // 확장 모듈
   // storybook: {
   //   //, 'storybook-code-panel'
   //   addons: ['@storybook/addon-controls', '@storybook/addon-notes', '@storybook/addon-jest'],
@@ -62,4 +70,8 @@ export default {
   //   //   },
   //   // },
   // },
+
+  router: {
+    middleware: 'setVisible',
+  },
 };
